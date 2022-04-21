@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@drawable/product_selector"
+        android:id="@+id/productFragment"
+        android:title="Products"/>
+    <item
+        android:icon="@drawable/add_selector"
+        android:id="@+id/buyFragment"
+        android:title="Add Stock"/>
+    <item
+        android:icon="@drawable/sell_selector"
+        android:id="@+id/sellFragment"
+        android:title="Sell Stock"/>
+
+    <item
+        android:icon="@drawable/statistic_selector"
+        android:id="@+id/statisticFragment"
+        android:title="Statistics"/>
+</menu>
