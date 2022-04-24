@@ -2,6 +2,7 @@ package com.example.inventory
 
 import android.content.ClipData
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
@@ -28,42 +29,25 @@ class CustomDialogFragment : DialogFragment() {
         val name = rootView.findViewById<TextInputEditText>(R.id.outlinedTextField1)
         val value = rootView.findViewById<TextInputEditText>(R.id.outlinedTextField2)
         val topAppBar = rootView.findViewById<MaterialToolbar>(R.id.topAppBar)
-        var responseValue : String = "Failure"
-        // Retrofit Builder
-        val retrofitBuilder = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://10.0.0.204:3001/")
-            .build()
 
-        val expressApi = retrofitBuilder.create(ExpressApi::class.java)
-
-        fun sendProductData(): String {
-            val addProduct = Product(null, name.text.toString(),value.text.toString().toDouble(), null, null)
-            val call = expressApi.addProductData(addProduct)
-
-            call.enqueue(object : Callback<Product> {
-                override fun onResponse(call: Call<Product>, response: Response<Product>) {
-                    responseValue = response.body()?.name.toString()
-
-                }
-
-                override fun onFailure(call: Call<Product>, t: Throwable) {
-                    print("Failure")
-                }
-            })
-
-            return responseValue
-        }
-
+        val retrofit = RetrofitClient.buildService(ExpressApi::class.java)
         //topAppBar.inflateMenu(R.menu.top_app_bar)
         topAppBar.setOnMenuItemClickListener {
             item: MenuItem? ->
             when(item!!.itemId) {
                 R.id.save -> {
+                    val addProduct = Product(null, name.text.toString(),value.text.toString().toDouble(), null, null)
+                    retrofit.addProductData(addProduct).enqueue(object : Callback<Product>{
+                        override fun onResponse(call: Call<Product>, response: Response<Product>) {
+                            Toast.makeText(activity, response.body()?.name.toString(), Toast.LENGTH_SHORT).show()
+                            dismiss()
+                        }
 
-                    var testData = sendProductData()
-
-                    Toast.makeText(activity, testData, Toast.LENGTH_SHORT).show()
+                        override fun onFailure(call: Call<Product>, t: Throwable) {
+                            Log.e("ERROR", "Error with submitting Product data")
+                            Toast.makeText(activity, t.message.toString(), Toast.LENGTH_SHORT).show()
+                        }
+                    })
 
                 }
             }
