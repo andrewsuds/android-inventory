@@ -44,7 +44,7 @@ class CustomDialogFragment : DialogFragment() {
                         }
 
                         override fun onFailure(call: Call<Product>, t: Throwable) {
-                            Log.e("ERROR", "Error with submitting Product data")
+                            Log.e("andrew", "Error with submitting Product data")
                             Toast.makeText(activity, t.message.toString(), Toast.LENGTH_SHORT).show()
                         }
                     })

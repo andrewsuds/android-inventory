@@ -21,10 +21,6 @@ class ProductFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_product, container, false)
         val textView1 = view.findViewById<TextView>(R.id.textView)
-        val textView2 = view.findViewById<TextView>(R.id.textView2)
-        val inputName = view.findViewById<EditText>(R.id.editTextTextPersonName)
-        val inputValue = view.findViewById<EditText>(R.id.editTextTextPersonName2)
-        val button = view.findViewById<Button>(R.id.button)
 
         val retrofit = RetrofitClient.buildService(ExpressApi::class.java)
 
