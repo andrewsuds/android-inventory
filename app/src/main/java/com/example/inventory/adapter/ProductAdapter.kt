@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.inventory.R
 import com.example.inventory.model.Product
 
-class MyAdapter: RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class ProductAdapter: RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
 
     private var myList = emptyList<Product>()
 
@@ -33,14 +33,6 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     fun setData(newList: List<Product>) {
         myList = newList
-        notifyDataSetChanged()
-    }
-
-    fun addData() {
-        var editedList = mutableListOf<Product>()
-        var myProduct = Product(500, "Some Random Thing", 0.69, 0.00, 0)
-        editedList.add(myProduct)
-        myList = editedList
         notifyDataSetChanged()
     }
 

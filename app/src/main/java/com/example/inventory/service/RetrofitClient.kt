@@ -1,4 +1,4 @@
-package com.example.inventory
+package com.example.inventory.service
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

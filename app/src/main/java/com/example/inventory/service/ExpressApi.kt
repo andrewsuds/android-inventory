@@ -1,4 +1,4 @@
-package com.example.inventory
+package com.example.inventory.service
 
 import com.example.inventory.model.Product
 import retrofit2.Call
@@ -15,9 +15,6 @@ interface ExpressApi {
     fun addProductData(@Body product: Product): Call<Product>
 
     @GET("all")
-    suspend fun getAll(): Response<List<Product>>
-
-    @GET("one")
-    suspend fun getOne(): Product
+    fun getProducts(): Call<List<Product>>
 
 }
