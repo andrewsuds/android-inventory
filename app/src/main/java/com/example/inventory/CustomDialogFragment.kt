@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.example.inventory.adapter.MyAdapter
 import com.example.inventory.model.Product
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.MaterialToolbar
@@ -20,6 +21,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class CustomDialogFragment : DialogFragment() {
 
+    private val myAdapter by lazy { MyAdapter() }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,17 +33,18 @@ class CustomDialogFragment : DialogFragment() {
         val value = rootView.findViewById<TextInputEditText>(R.id.outlinedTextField2)
         val topAppBar = rootView.findViewById<MaterialToolbar>(R.id.topAppBar)
 
-        val retrofit = RetrofitClient.buildService(ExpressApi::class.java)
+        val retrofit = RetrofitClient.api
         //topAppBar.inflateMenu(R.menu.top_app_bar)
         topAppBar.setOnMenuItemClickListener {
             item: MenuItem? ->
             when(item!!.itemId) {
                 R.id.save -> {
-                    val addProduct = Product(null, name.text.toString(),value.text.toString().toDouble(), null, null)
+                    val addProduct = Product(0, name.text.toString(),value.text.toString().toDouble(), 0.00, 0)
                     retrofit.addProductData(addProduct).enqueue(object : Callback<Product>{
                         override fun onResponse(call: Call<Product>, response: Response<Product>) {
                             Toast.makeText(activity, response.body()?.name.toString(), Toast.LENGTH_SHORT).show()
                             dismiss()
+                            myAdapter.addData()
                         }
 
                         override fun onFailure(call: Call<Product>, t: Throwable) {

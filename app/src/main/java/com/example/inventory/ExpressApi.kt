@@ -15,6 +15,9 @@ interface ExpressApi {
     fun addProductData(@Body product: Product): Call<Product>
 
     @GET("all")
-    fun getProductData(): Call<List<Product>>
+    suspend fun getAll(): Response<List<Product>>
+
+    @GET("one")
+    suspend fun getOne(): Product
 
 }

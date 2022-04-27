@@ -15,8 +15,8 @@ object RetrofitClient {
         .client(okHttpClient)
         .build()
 
-    fun<T> buildService(service: Class<T>): T{
-        return retrofit.create(service)
+    val api: ExpressApi by lazy {
+        retrofit.create(ExpressApi::class.java)
     }
 
 }
