@@ -5,10 +5,6 @@ plugins {
 
 android {
 
-    buildFeatures {
-        dataBinding true
-    }
-
     compileSdk 31
 
     defaultConfig {

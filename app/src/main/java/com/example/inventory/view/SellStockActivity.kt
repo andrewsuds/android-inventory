@@ -59,7 +59,7 @@ class SellStockActivity : AppCompatActivity() {
         topAppBar.setOnMenuItemClickListener { item: MenuItem? ->
             when (item!!.itemId) {
                 R.id.save -> {
-                    val addSellReceipt = SellReceipt(0,0.00,0.00,sellTotal.text.toString().toDouble(),0.00,0.00,qty.text.toString().toInt(),"",idList[spinner.selectedItemPosition],"")
+                    val addSellReceipt = SellReceipt(0,0.00,0.00,sellTotal.text.toString().toDouble(),0.00,0.00,qty.text.toString().toInt(),"",idList[spinner.selectedItemPosition],"", "")
                     retrofit.addSellReceipt(addSellReceipt).enqueue(object : Callback<SellReceipt>{
                         override fun onResponse(call: Call<SellReceipt>, response: Response<SellReceipt>) {
                             if(response.body()?.sellReceiptID != 0) {

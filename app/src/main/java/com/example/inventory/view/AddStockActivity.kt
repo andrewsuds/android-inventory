@@ -59,7 +59,7 @@ class AddStockActivity : AppCompatActivity() {
         topAppBar.setOnMenuItemClickListener { item: MenuItem? ->
             when (item!!.itemId) {
                 R.id.save -> {
-                    val addBuyReceipt = BuyReceipt(0,0.00,buyTotal.text.toString().toDouble(),qty.text.toString().toInt(),"",idList[spinner.selectedItemPosition],"")
+                    val addBuyReceipt = BuyReceipt(0,0.00,buyTotal.text.toString().toDouble(),qty.text.toString().toInt(),"",idList[spinner.selectedItemPosition],"","")
                     retrofit.addBuyReceipt(addBuyReceipt).enqueue(object : Callback<BuyReceipt>{
                         override fun onResponse(call: Call<BuyReceipt>, response: Response<BuyReceipt>) {
                             if(response.body()?.buyReceiptID != 0) {

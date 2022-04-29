@@ -9,5 +9,6 @@ data class BuyReceipt (
     @SerializedName("qty") val qty: Int,
     @SerializedName("date") val date: String,
     @SerializedName("productid") val productID: Int,
+    @SerializedName("name") val name: String,
     @SerializedName("message") val message: String
 )

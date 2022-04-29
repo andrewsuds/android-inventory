@@ -30,8 +30,9 @@ class ProductFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_product, container, false)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         val productFAB = view.findViewById<FloatingActionButton>(R.id.productFAB)
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.adapter = productAdapter
         recyclerView.layoutManager = LinearLayoutManager(activity)
 

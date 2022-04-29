@@ -6,10 +6,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.inventory.R
+import com.example.inventory.adapter.BuyAdapter
+import com.example.inventory.model.BuyReceipt
+import com.example.inventory.service.RetrofitClient
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class BuyFragment : Fragment() {
+
+    private val buyAdapter by lazy { BuyAdapter() }
+    private val retrofit = RetrofitClient.api
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,12 +32,37 @@ class BuyFragment : Fragment() {
 
         val buyFAB = view.findViewById<FloatingActionButton>(R.id.buyFAB)
 
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.adapter = buyAdapter
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+
+        setupRecycler()
+
         buyFAB.setOnClickListener {
             val intent = Intent(activity, AddStockActivity::class.java)
             startActivity(intent)
         }
 
         return view
+    }
+
+    private fun setupRecycler() {
+        retrofit.getBuyReceipts().enqueue(object : Callback<List<BuyReceipt>> {
+            override fun onResponse(call: Call<List<BuyReceipt>>, response: Response<List<BuyReceipt>>) {
+                val buyReceipts: List<BuyReceipt> = response.body()!!
+                buyAdapter.setData(buyReceipts)
+
+            }
+
+            override fun onFailure(call: Call<List<BuyReceipt>>, t: Throwable) {
+                Toast.makeText(activity, t.message.toString(), Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupRecycler()
     }
 
 }

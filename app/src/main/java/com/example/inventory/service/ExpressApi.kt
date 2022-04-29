@@ -27,6 +27,12 @@ interface ExpressApi {
     @GET("all")
     fun getProducts(): Call<List<Product>>
 
+    @GET("allbuy")
+    fun getBuyReceipts(): Call<List<BuyReceipt>>
+
+    @GET("allsell")
+    fun getSellReceipts(): Call<List<SellReceipt>>
+
 
 
 }
