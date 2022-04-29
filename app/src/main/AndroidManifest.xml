@@ -13,7 +13,13 @@
         android:theme="@style/Theme.Inventory"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".view.MainActivity2"
+            android:name=".view.SellStockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.AddStockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.AddProductActivity"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"

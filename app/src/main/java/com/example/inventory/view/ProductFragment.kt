@@ -41,7 +41,7 @@ class ProductFragment : Fragment() {
 
         productFAB.setOnClickListener {
             //myDialog.show(parentFragmentManager, "custom dialog")
-            val intent = Intent(activity, MainActivity2::class.java)
+            val intent = Intent(activity, AddProductActivity::class.java)
 
             startActivity(intent)
 

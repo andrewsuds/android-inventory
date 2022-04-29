@@ -34,8 +34,4 @@
         <item name="actionMenuTextColor">?attr/colorPrimary</item>
         <item name="android:textAllCaps">false</item>
     </style>
-
-    <style name="DialogTheme" parent="Theme.Inventory">
-        <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
-    </style>
 </resources>

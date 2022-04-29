@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.Toast
 import com.example.inventory.R
 import com.example.inventory.model.Product
@@ -15,17 +14,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity2 : AppCompatActivity() {
+class AddProductActivity : AppCompatActivity() {
 
     val retrofit = RetrofitClient.api
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
+        setContentView(R.layout.activity_addproduct)
 
         val topAppBar = findViewById<MaterialToolbar>(R.id.topAppBar)
         val name = findViewById<TextInputEditText>(R.id.outlinedTextField1)
-        val value = findViewById<TextInputEditText>(R.id.outlinedTextField2)
 
         topAppBar.setNavigationOnClickListener {
             finish()
@@ -34,18 +32,15 @@ class MainActivity2 : AppCompatActivity() {
         topAppBar.setOnMenuItemClickListener { item: MenuItem? ->
             when (item!!.itemId) {
                 R.id.save -> {
-                    val addProduct = Product(0, name.text.toString(),value.text.toString().toDouble(), 0.00, 0)
+                    val addProduct = Product(0, name.text.toString(), 0.00, 0, "")
                     retrofit.addProductData(addProduct).enqueue(object : Callback<Product>{
                         override fun onResponse(call: Call<Product>, response: Response<Product>) {
                             if(response.body()?.productID != 0) {
-                                Toast.makeText(applicationContext, response.body()?.name.toString(), Toast.LENGTH_SHORT).show()
+                                Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
                                 finish()
                             } else {
-                                Toast.makeText(applicationContext, response.body()?.name.toString(), Toast.LENGTH_SHORT).show()
+                                Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
                             }
-
-
-
                         }
 
                         override fun onFailure(call: Call<Product>, t: Throwable) {

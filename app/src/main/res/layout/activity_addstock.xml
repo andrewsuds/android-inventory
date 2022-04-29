@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".view.AddStockActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -20,21 +22,31 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        />
+
 
     <com.google.android.material.textfield.TextInputLayout
+
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
-        android:hint="Name">
+        android:hint="Receipt Total">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/outlinedTextField1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textAutoCorrect"
+            android:inputType="numberDecimal"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -46,13 +58,13 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
-        android:hint="Value">
+        android:hint="Quantity">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/outlinedTextField2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 

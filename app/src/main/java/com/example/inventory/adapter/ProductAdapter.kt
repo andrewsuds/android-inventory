@@ -24,7 +24,7 @@ class ProductAdapter: RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
         val textView3 = holder.itemView.findViewById<TextView>(R.id.rowTextView3)
         textView1.text = myList[position].productID.toString()
         textView2.text = myList[position].name
-        textView3.text = "$${myList[position].sellPrice.toBigDecimal().toString()}"
+        textView3.text = "$${myList[position].value.toString()}"
     }
 
     override fun getItemCount(): Int {
