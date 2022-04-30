@@ -9,6 +9,7 @@ import com.example.inventory.R
 import com.example.inventory.model.Product
 import com.example.inventory.service.RetrofitClient
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,8 +26,19 @@ class AddProductActivity : AppCompatActivity() {
         val topAppBar = findViewById<MaterialToolbar>(R.id.topAppBar)
         val name = findViewById<TextInputEditText>(R.id.outlinedTextField1)
 
+
+
         topAppBar.setNavigationOnClickListener {
-            finish()
+            MaterialAlertDialogBuilder(this)
+                .setTitle("Discard draft?")
+                .setPositiveButton("Discard") { dialog, which ->
+                    finish()
+                }
+                .setNegativeButton("Cancel") { dialog, which ->
+                    //nothing
+                }
+                .show()
+
         }
 
         topAppBar.setOnMenuItemClickListener { item: MenuItem? ->
@@ -54,6 +66,5 @@ class AddProductActivity : AppCompatActivity() {
             true
         }
     }
-
 
 }

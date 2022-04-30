@@ -27,9 +27,9 @@ class SellAdapter: RecyclerView.Adapter<SellAdapter.MyViewHolder>() {
 
         textView1.text = myList[position].name
         textView2.text = myList[position].date
-        textView3.text = "Quantity Sold: "+myList[position].qty
-        textView4.text = "Sold: $"+myList[position].sellTotal
-        textView5.text = "Profit: $"+myList[position].profit
+        textView3.text = "Quantity Sold: ${myList[position].qty}"
+        textView4.text = "Sold:  $${"%.2f".format(myList[position].sellTotal)} or $${"%.2f".format(myList[position].sellPrice)} / item"
+        textView5.text = "Profit:  $${"%.2f".format(myList[position].profit)}"
     }
 
     override fun getItemCount(): Int {

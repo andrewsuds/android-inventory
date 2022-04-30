@@ -26,8 +26,8 @@ class BuyAdapter: RecyclerView.Adapter<BuyAdapter.MyViewHolder>() {
 
         textView1.text = myList[position].name
         textView2.text = myList[position].date
-        textView3.text = "Quantity Added: "+myList[position].qty
-        textView4.text = "Paid: $${myList[position].buyTotal} or $${myList[position].buyPrice}/item"
+        textView3.text = "Quantity Added:  ${myList[position].qty}"
+        textView4.text = "Paid:  $${"%.2f".format(myList[position].buyTotal)} or $${"%.2f".format(myList[position].buyPrice)} / item"
     }
 
     override fun getItemCount(): Int {

@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.inventory.R
 import com.example.inventory.model.Product
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 class ProductAdapter: RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
 
@@ -31,8 +33,8 @@ class ProductAdapter: RecyclerView.Adapter<ProductAdapter.MyViewHolder>() {
             }
 
         textView1.text = myList[position].name
-        textView2.text = "Quantity: ${myList[position].qtyOnHand}"
-        textView3.text = "Value: $${myList[position].value} or $${averageUnitPrice}/item"
+        textView2.text = "Quantity:  ${myList[position].qtyOnHand}"
+        textView3.text = "Value:  $${"%.2f".format(myList[position].value)} or $${"%.2f".format(averageUnitPrice)} / item"
     }
 
     override fun getItemCount(): Int {
