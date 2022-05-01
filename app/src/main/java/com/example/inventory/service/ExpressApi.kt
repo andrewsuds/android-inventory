@@ -1,14 +1,9 @@
 package com.example.inventory.service
 
-import com.example.inventory.model.BuyReceipt
-import com.example.inventory.model.Product
-import com.example.inventory.model.SellReceipt
+import com.example.inventory.model.*
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ExpressApi {
 
@@ -33,6 +28,11 @@ interface ExpressApi {
     @GET("allsell")
     fun getSellReceipts(): Call<List<SellReceipt>>
 
+    @GET("statistic")
+    fun getStatistic(): Call<Statistic>
 
+    @Headers("Content-Type: application/json")
+    @POST("delproduct")
+    fun deleteProduct(@Body delete: Delete): Call<Delete>
 
 }

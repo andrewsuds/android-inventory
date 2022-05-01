@@ -12,6 +12,7 @@ import com.example.inventory.model.BuyReceipt
 import com.example.inventory.model.Product
 import com.example.inventory.service.RetrofitClient
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
@@ -53,7 +54,7 @@ class AddStockActivity : AppCompatActivity() {
         })
 
         topAppBar.setNavigationOnClickListener {
-            finish()
+            createDialog()
         }
 
         topAppBar.setOnMenuItemClickListener { item: MenuItem? ->
@@ -79,6 +80,18 @@ class AddStockActivity : AppCompatActivity() {
 
             true
         }
+    }
+
+    private fun createDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Discard draft?")
+            .setPositiveButton("Discard") { dialog, which ->
+                finish()
+            }
+            .setNegativeButton("Cancel") { dialog, which ->
+                //nothing
+            }
+            .show()
     }
 
 

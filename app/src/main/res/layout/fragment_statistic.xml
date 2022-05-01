@@ -18,4 +18,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Lifetime Profit:"
+        android:textAppearance="?attr/textAppearanceTitleMedium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Lifetime Quantity Sold:"
+        android:textAppearance="?attr/textAppearanceTitleMedium"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="$0.00"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="0"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/textView3" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

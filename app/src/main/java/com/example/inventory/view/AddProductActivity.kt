@@ -27,18 +27,8 @@ class AddProductActivity : AppCompatActivity() {
         val name = findViewById<TextInputEditText>(R.id.outlinedTextField1)
 
 
-
         topAppBar.setNavigationOnClickListener {
-            MaterialAlertDialogBuilder(this)
-                .setTitle("Discard draft?")
-                .setPositiveButton("Discard") { dialog, which ->
-                    finish()
-                }
-                .setNegativeButton("Cancel") { dialog, which ->
-                    //nothing
-                }
-                .show()
-
+            createDialog()
         }
 
         topAppBar.setOnMenuItemClickListener { item: MenuItem? ->
@@ -65,6 +55,18 @@ class AddProductActivity : AppCompatActivity() {
 
             true
         }
+    }
+
+    private fun createDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Discard draft?")
+            .setPositiveButton("Discard") { dialog, which ->
+                finish()
+            }
+            .setNegativeButton("Cancel") { dialog, which ->
+                //nothing
+            }
+            .show()
     }
 
 }
