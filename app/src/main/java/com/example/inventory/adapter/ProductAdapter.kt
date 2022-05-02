@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -86,6 +87,24 @@ class ProductAdapter(val myContext: Context) : RecyclerView.Adapter<ProductAdapt
             }
         })
     }
+
+    fun getProducts(loading : ProgressBar?) {
+        retrofit.getProducts().enqueue(object : Callback<List<Product>> {
+            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
+                val products: List<Product> = response.body()!!
+                setData(products)
+                if (loading != null) {
+                    loading.visibility = View.GONE
+                }
+
+            }
+
+            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
+                Toast.makeText(myContext, t.message.toString(), Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
 
 
 

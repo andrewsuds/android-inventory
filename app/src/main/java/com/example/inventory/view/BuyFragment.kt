@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +21,7 @@ import retrofit2.Response
 
 class BuyFragment : Fragment() {
 
-    private val buyAdapter by lazy { BuyAdapter() }
+    private val buyAdapter by lazy { BuyAdapter(requireContext()) }
     private val retrofit = RetrofitClient.api
 
     override fun onCreateView(
@@ -31,12 +32,12 @@ class BuyFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_buy, container, false)
 
         val buyFAB = view.findViewById<FloatingActionButton>(R.id.buyFAB)
-
+        val loading = view.findViewById<ProgressBar>(R.id.progressBar)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.adapter = buyAdapter
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        setupRecycler()
+        buyAdapter.getBuyReceipts(loading)
 
         buyFAB.setOnClickListener {
             val intent = Intent(activity, AddStockActivity::class.java)
@@ -46,23 +47,11 @@ class BuyFragment : Fragment() {
         return view
     }
 
-    private fun setupRecycler() {
-        retrofit.getBuyReceipts().enqueue(object : Callback<List<BuyReceipt>> {
-            override fun onResponse(call: Call<List<BuyReceipt>>, response: Response<List<BuyReceipt>>) {
-                val buyReceipts: List<BuyReceipt> = response.body()!!
-                buyAdapter.setData(buyReceipts)
 
-            }
-
-            override fun onFailure(call: Call<List<BuyReceipt>>, t: Throwable) {
-                Toast.makeText(activity, t.message.toString(), Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 
     override fun onResume() {
         super.onResume()
-        setupRecycler()
+        buyAdapter.getBuyReceipts(null)
     }
 
 }

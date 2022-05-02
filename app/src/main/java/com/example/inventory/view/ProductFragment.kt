@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,16 +32,13 @@ class ProductFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_product, container, false)
-
+        val loading = view.findViewById<ProgressBar>(R.id.progressBar)
         val productFAB = view.findViewById<FloatingActionButton>(R.id.productFAB)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.adapter = productAdapter
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-
-        setupRecycler()
-
-
+        productAdapter.getProducts(loading)
 
         productFAB.setOnClickListener {
             //myDialog.show(parentFragmentManager, "custom dialog")
@@ -53,24 +51,11 @@ class ProductFragment : Fragment() {
         return view
     }
 
-    private fun setupRecycler() {
-        retrofit.getProducts().enqueue(object : Callback<List<Product>> {
-            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
-                val products: List<Product> = response.body()!!
-                productAdapter.setData(products)
 
-            }
-
-            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
-                Toast.makeText(activity, t.message.toString(), Toast.LENGTH_SHORT).show()
-            }
-        })
-
-    }
 
     override fun onResume() {
         super.onResume()
-        setupRecycler()
+        productAdapter.getProducts(null)
     }
 
 

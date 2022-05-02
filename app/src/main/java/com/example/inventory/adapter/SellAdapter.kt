@@ -1,16 +1,24 @@
 package com.example.inventory.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.inventory.R
 import com.example.inventory.model.SellReceipt
+import com.example.inventory.service.RetrofitClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class SellAdapter: RecyclerView.Adapter<SellAdapter.MyViewHolder>() {
+class SellAdapter(val myContext : Context): RecyclerView.Adapter<SellAdapter.MyViewHolder>() {
 
     private var myList = emptyList<SellReceipt>()
+    private val retrofit = RetrofitClient.api
 
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
@@ -39,6 +47,23 @@ class SellAdapter: RecyclerView.Adapter<SellAdapter.MyViewHolder>() {
     fun setData(newList: List<SellReceipt>) {
         myList = newList
         notifyDataSetChanged()
+    }
+
+    fun getSellReceipts(loading : ProgressBar?) {
+        retrofit.getSellReceipts().enqueue(object : Callback<List<SellReceipt>> {
+            override fun onResponse(call: Call<List<SellReceipt>>, response: Response<List<SellReceipt>>) {
+                val sellReceipts: List<SellReceipt> = response.body()!!
+                setData(sellReceipts)
+                if (loading != null) {
+                    loading.visibility = View.GONE
+                }
+
+            }
+
+            override fun onFailure(call: Call<List<SellReceipt>>, t: Throwable) {
+                Toast.makeText(myContext, t.message.toString(), Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
 

@@ -38,7 +38,7 @@ class SellStockActivity : AppCompatActivity() {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = spinnerAdapter
 
-        retrofit.getProducts().enqueue(object : Callback<List<Product>> {
+        retrofit.getProductsWithStock().enqueue(object : Callback<List<Product>> {
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
                 val products: List<Product> = response.body()!!
 
