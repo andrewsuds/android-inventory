@@ -24,11 +24,11 @@ The idea of this app is to keep track of inventory quantities, profits, and hist
 - Android Retrofit2 Implementation that gets data from Node.js
 
 ## Screenshots:
-![Screenshot 1](https://imgur.com/8OYJqQQ)
-![Screenshot 2](https://imgur.com/Gi1tXTC)
-![Screenshot 3](https://imgur.com/YiZC3T2)
-![Screenshot 4](https://imgur.com/v1bSzUb)
-![Screenshot 5](https://imgur.com/ldd3zqZ)
-![Screenshot 6](https://imgur.com/snO1y3H)
-![Screenshot 7](https://imgur.com/9t2SzOl)
+![Screenshot 1](https://i.imgur.com/8OYJqQQ.jpg)
+![Screenshot 2](https://i.imgur.com/Gi1tXTC.jpg)
+![Screenshot 3](https://i.imgur.com/YiZC3T2.jpg)
+![Screenshot 4](https://i.imgur.com/v1bSzUb.jpg)
+![Screenshot 5](https://i.imgur.com/ldd3zqZ.jpg)
+![Screenshot 6](https://i.imgur.com/snO1y3H.jpg)
+![Screenshot 7](https://i.imgur.com/9t2SzOl.jpg)
 
