@@ -22,3 +22,13 @@ The idea of this app is to keep track of inventory quantities, profits, and hist
 - RecyclerView with Adapter
 - Node.js API Server that communicates with MySQL Database
 - Android Retrofit2 Implementation that gets data from Node.js
+
+## Screenshots:
+![Screenshot 1](https://imgur.com/8OYJqQQ)
+![Screenshot 2](https://imgur.com/Gi1tXTC)
+![Screenshot 3](https://imgur.com/YiZC3T2)
+![Screenshot 4](https://imgur.com/v1bSzUb)
+![Screenshot 5](https://imgur.com/ldd3zqZ)
+![Screenshot 6](https://imgur.com/snO1y3H)
+![Screenshot 7](https://imgur.com/9t2SzOl)
+
