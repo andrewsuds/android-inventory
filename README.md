@@ -39,5 +39,5 @@ The idea of this app is to keep track of inventory quantities, profits, and hist
 </p>
 
 ## Video:
-[!(https://i.imgur.com/csCWfry.jpg)](https://www.youtube.com/watch?v=cSNZ0z35QFs)
+[![Video](https://i.imgur.com/csCWfry.jpg)](https://www.youtube.com/watch?v=cSNZ0z35QFs "Video")
 
