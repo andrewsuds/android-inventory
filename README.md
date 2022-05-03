@@ -1,26 +1,20 @@
 # Android Inventory App
 
 ## Idea:
-
 The idea of this app is to keep track of inventory quantities, profits, and history of the buying and selling prices.
 
 ## Screens:
-
-#### Fragments:
-
+###### Fragments:
 - Products
 - Add Stock & History
 - Sell Stock & History
 - Statistics
-
-#### Activities:
-
+###### Activities:
 - Add Product Input
 - Add Stock Input
 - Sell Stock Input
 
 ## Features:
-
 - Fragments
 - Activities
 - Top App Bar, Bottom Navigation Bar
