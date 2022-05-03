@@ -25,16 +25,15 @@ The idea of this app is to keep track of inventory quantities, profits, and hist
 
 ## Screenshots:
 <p float="left">
-  <img src="https://i.imgur.com/8OYJqQQ.jpg" width="32%" />
-  <img src="https://i.imgur.com/Gi1tXTC.jpg" width="32%" /> 
-  <img src="https://i.imgur.com/YiZC3T2.jpg" width="32%" />
+  <img src="https://i.imgur.com/8OYJqQQ.jpg" width="25%" />
+  <img src="https://i.imgur.com/Gi1tXTC.jpg" width="25%" /> 
+  <img src="https://i.imgur.com/YiZC3T2.jpg" width="25%" />
+  <img src="https://i.imgur.com/v1bSzUb.jpg" width="25%" />
 </p>
 <p float="left">
-  <img src="https://i.imgur.com/v1bSzUb.jpg" width="32%" />
-  <img src="https://i.imgur.com/ldd3zqZ.jpg" width="32%" /> 
-  <img src="https://i.imgur.com/snO1y3H.jpg" width="32%" />
-</p>
-<p float="left">
-  <img src="https://i.imgur.com/9t2SzOl.jpg" width="32%" />
+  
+  <img src="https://i.imgur.com/ldd3zqZ.jpg" width="25%" /> 
+  <img src="https://i.imgur.com/snO1y3H.jpg" width="25%" />
+  <img src="https://i.imgur.com/9t2SzOl.jpg" width="25%" />
 </p>
 
